@@ -1,0 +1,30 @@
+'use strict';
+
+let gCurrId = 0;
+const gStarterImgs = [
+    {fileName: '2', id: gCurrId++},
+    {fileName: '003', id: gCurrId++},
+    {fileName: '004', id: gCurrId++},
+    {fileName: '005', id: gCurrId++},
+    {fileName: '5', id: gCurrId++},
+    {fileName: '006', id: gCurrId++},
+    {fileName: '8', id: gCurrId++},
+    {fileName: '9', id: gCurrId++},
+    {fileName: '12', id: gCurrId++},
+    {fileName: '19', id: gCurrId++},
+    {fileName: 'Ancient-Aliens', id: gCurrId++},
+    {fileName: 'drevil', id: gCurrId++},
+    {fileName: 'img2', id: gCurrId++},
+    {fileName: 'img4', id: gCurrId++},
+    {fileName: 'img5', id: gCurrId++},
+    {fileName: 'img6', id: gCurrId++},
+    {fileName: 'img11', id: gCurrId++},
+    {fileName: 'img12', id: gCurrId++},
+    {fileName: 'leo', id: gCurrId++},
+    {fileName: 'meme1', id: gCurrId++},
+    {fileName: 'One-Does-Not-Simply', id: gCurrId++},
+    {fileName: 'Oprah-You-Get-A', id: gCurrId++},
+    {fileName: 'patrick', id: gCurrId++},
+    {fileName: 'putin', id: gCurrId++},
+    {fileName: 'X-Everywhere', id: gCurrId++},
+];

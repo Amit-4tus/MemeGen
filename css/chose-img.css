@@ -1,0 +1,47 @@
+body {
+    margin: 0% auto;
+    width: 100vw;
+    background-color: #D0F4CB;
+    color: #773344;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5%;
+    background-color: #F18805;
+}
+
+h2 {
+    text-align: center;
+}
+
+.gallery {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.starter-img {
+    width: 25vw;
+    padding: 4vw;
+    border-radius: 27%;
+}
+
+.about-me {
+    text-align: center;
+    padding: 10%;
+    background-color: white;
+}
+
+.portrait {
+    width: 50vw;
+    border-radius: 50%;
+}
+
+footer {
+    text-align: center;
+    font-size: 2rem;
+    width: 100vw;
+    padding: 10% 0%;
+    background-color: #F18805;
+}
