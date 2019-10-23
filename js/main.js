@@ -13,12 +13,17 @@ function initEditor() {
     gChosenImg = JSON.parse(localStorage.getItem('chosenImg'));
     elCanvas = document.getElementById('canvas');
     ctx = elCanvas.getContext('2d');
-    renderCanvasImg();
+    renderCanvas();
 }
 
 function onImg(imgId) {
     localStorage.setItem('chosenImg', JSON.stringify(gStarterImgs[imgId]));
     window.location = 'editor.html';
+}
+
+function renderCanvas() {
+    renderCanvasImg();
+    setTimeout(renderCanvasTxt, 100);
 }
 
 function renderCanvasImg() {
@@ -29,9 +34,28 @@ function renderCanvasImg() {
     }
 }
 
-function onAddText(txt = 'lorem') {
-    ctx.fillText(txt, 150, 75);
-    ctx.strokeText(txt, 150, 75);
+function onAddTxt() {
+    addTxt();
+    renderTxt(undefined, 150, 75);
+}
+
+function renderTxt(txt = 'lorem', xCoord, yCoord) {
+    ctx.fillText(txt, xCoord, yCoord);
+    ctx.strokeText(txt, xCoord, yCoord);
+}
+
+function renderCanvasTxt() {
+    for (let i = 0; i < txts.length; i++) {
+        renderTxt(txts[i].txt, txts[i].xCoord, txts[i].yCoord);
+    }
+}
+
+function changeTxt() {
+    let gSelectedId = gSelectedTxt.id;
+    let elInput = document.querySelector('.txt-input');
+    txts[gSelectedId].txt = elInput.value;
+    elInput.value = '';
+    renderCanvas();
 }
 
 function pressDownOnCanvas() {
@@ -43,5 +67,29 @@ function endPressOnCanvas() {
 }
 
 function moveOnCanvas(X, Y) {
+    if (!canvasIsPressed) return;
+    console.log('x', X, 'y', Y);
+    
+    // txts[gSelectedId].xCoord += ;
+    // left here ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+}
 
+function goToLastTxt() {
+    let gSelectedId = gSelectedTxt.id;
+    if (gSelectedId > 0) {
+        gSelectedTxt = txts[gSelectedId - 1];
+    }
+    else {
+        gSelectedTxt = txts[txts.length - 1];
+    }
+}
+
+function goToNextTxt() {
+    let gSelectedId = gSelectedTxt.id;
+    if (gSelectedId === txts.length - 1 && gSelectedId !== 0) {
+        gSelectedTxt = txts[0];
+    }
+    else {
+        gSelectedTxt = txts[gSelectedId + 1];
+    }
 }

@@ -16,12 +16,13 @@
     </header>
 
     <main>
-        <canvas id="canvas" onclick="onAddText()" onmousemove="moveOnCanvas(event.offsetX, event.offsetY)"
-        ontouchmov></canvas>
+        <canvas id="canvas" onclick="onAddTxt()" onmousedown="pressDownOnCanvas()" onmousemove="moveOnCanvas(event.offsetX, event.offsetY)"
+        onmouseup="endPressOnCanvas()"></canvas>
         <div class="tools">
-            <input type="text">
-            <button onclick="">Go</button>
-            <button>+</button>
+            <input type="text" class="txt-input">
+            <button onclick="changeTxt()">Go</button>
+            <button class="up-btn" onclick="goToLastTxt()"><i class="fas fa-arrow-up"></i></button>
+            <button class="down-btn" onclick="goToNextTxt()"><i class="fas fa-arrow-down"></i></button>
         </div>
         <button class="done-btn">Done</button>
     </main>
