@@ -13,7 +13,7 @@ function initEditor() {
     gChosenImg = JSON.parse(localStorage.getItem('chosenImg'));
     elCanvas = document.getElementById('canvas');
     ctx = elCanvas.getContext('2d');
-    renderCanvas();
+    renderCanvasImg();
 }
 
 function onImg(imgId) {
@@ -27,26 +27,29 @@ function renderCanvas() {
 }
 
 function renderCanvasImg() {
-    let starterImg = document.querySelector('.starter-img');
-    starterImg.src = `starter-images/${gChosenImg.fileName}.jpg`;
-    starterImg.onload = function () {
-        ctx.drawImage(starterImg, 0, 0, 300, 150);
+    let elStarterImg = document.querySelector('.starter-img');
+    elStarterImg.src = `starter-images/${gChosenImg.fileName}.jpg`;
+    elStarterImg.onload = function () {
+        ctx.drawImage(elStarterImg, 0, 0, 300, 300);
     }
 }
 
 function onAddTxt() {
     addTxt();
-    renderTxt(undefined, 150, 75);
+    renderSpecTxt(undefined, 150, 75, 15);
 }
 
-function renderTxt(txt = 'lorem', xCoord, yCoord) {
+function renderSpecTxt(txt = 'lorem', xCoord, yCoord, size) {
+    ctx.font = `${size}px Impact`;
+    ctx.fillStyle = "white";
     ctx.fillText(txt, xCoord, yCoord);
+    ctx.fillStyle = "black";
     ctx.strokeText(txt, xCoord, yCoord);
 }
 
 function renderCanvasTxt() {
     for (let i = 0; i < txts.length; i++) {
-        renderTxt(txts[i].txt, txts[i].xCoord, txts[i].yCoord);
+        renderSpecTxt(txts[i].txt, txts[i].xCoord, txts[i].yCoord, txts[i].size);
     }
 }
 
@@ -58,8 +61,10 @@ function changeTxt() {
     renderCanvas();
 }
 
-function pressDownOnCanvas() {
+function pressDownOnCanvas(X, Y) {
     canvasIsPressed = true;
+    gLastX = X;
+    gLastY = Y;
 }
 
 function endPressOnCanvas() {
@@ -68,28 +73,80 @@ function endPressOnCanvas() {
 
 function moveOnCanvas(X, Y) {
     if (!canvasIsPressed) return;
-    console.log('x', X, 'y', Y);
-    
-    // txts[gSelectedId].xCoord += ;
-    // left here ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    moveInCanvasModel(X, Y);
+    renderCanvas();
 }
 
 function goToLastTxt() {
-    let gSelectedId = gSelectedTxt.id;
+    gSelectedId = gSelectedTxt.id;
     if (gSelectedId > 0) {
         gSelectedTxt = txts[gSelectedId - 1];
     }
     else {
         gSelectedTxt = txts[txts.length - 1];
     }
+    gSelectedId = gSelectedTxt.id;
+    document.querySelector('.txt-input').placeholder = gSelectedTxt.txt;
 }
 
 function goToNextTxt() {
-    let gSelectedId = gSelectedTxt.id;
+    gSelectedId = gSelectedTxt.id;
     if (gSelectedId === txts.length - 1 && gSelectedId !== 0) {
         gSelectedTxt = txts[0];
     }
     else {
         gSelectedTxt = txts[gSelectedId + 1];
     }
+    gSelectedId = gSelectedTxt.id;
+    document.querySelector('.txt-input').placeholder = gSelectedTxt.txt;
 }
+
+function onDeleteTxt() {
+    deleteTxt();
+    renderCanvas();
+}
+
+function onChngeSize(value) {
+    txts[gSelectedId].size = value * .6 + 10;
+    renderCanvas();
+}
+
+function done() {
+    dataURLstring = elCanvas.toDataURL();
+    openModal(dataURLstring);
+}
+
+function openModal(dataURLstring) {
+    document.querySelector('.screen').classList.remove('hide');
+    document.querySelector('.modal').classList.remove('hide');
+    document.querySelector('.modal > img').src = dataURLstring;
+}
+
+function closeModal() {
+    document.querySelector('.screen').classList.add('hide');
+    document.querySelector('.modal').classList.add('hide');
+}
+
+function save() {
+    document.querySelector('.save-btn').href = dataURLstring;
+}
+
+function share(elShareBtn) {
+    let elFinishedMeme = document.querySelector('.finished-meme');
+    let u = elFinishedMeme.src;
+    let t = elFinishedMeme.getAttribute('alt');
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u));
+    return false;
+}
+setTimeout(() => {
+    elCanvas.addEventListener('touchstart', function () {
+        pressDownOnCanvas(event.touches[0].clientX, event.touches[0].clientY)
+    });
+    elCanvas.addEventListener('touchmove', function () {
+        moveOnCanvas(event.offsetX, event.offsetY)
+        event.preventDefault();
+    });
+    elCanvas.addEventListener('touchend', function () {
+        endPressOnCanvas()
+    });
+}, 300);

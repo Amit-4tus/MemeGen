@@ -11,20 +11,29 @@
 
 <body onload="initEditor()">
     <header>
-        <div class="logo">MEMEGEN</div>
-        <div class="nav"><i class="fas fa-bars"></i></div>
+        <h1 class="logo">MEMEGEN</h1>
     </header>
 
     <main>
-        <canvas id="canvas" onclick="onAddTxt()" onmousedown="pressDownOnCanvas()" onmousemove="moveOnCanvas(event.offsetX, event.offsetY)"
+        <canvas id="canvas" width="300" height="300"
+        onmousedown="pressDownOnCanvas(event.offsetX, event.offsetY)"
+        onmousemove="moveOnCanvas(event.offsetX, event.offsetY)"
         onmouseup="endPressOnCanvas()"></canvas>
+
         <div class="tools">
-            <input type="text" class="txt-input">
-            <button onclick="changeTxt()">Go</button>
-            <button class="up-btn" onclick="goToLastTxt()"><i class="fas fa-arrow-up"></i></button>
-            <button class="down-btn" onclick="goToNextTxt()"><i class="fas fa-arrow-down"></i></button>
+            <div class="global-meme-tools">
+                <button class="add-txt-btn" onclick="onAddTxt()">+</button>
+                <button class="up-btn" onclick="goToLastTxt()"><i class="fas fa-arrow-up"></i></button>
+                <button class="down-btn" onclick="goToNextTxt()"><i class="fas fa-arrow-down"></i></button>
+                <button class="delete-txt-btn" onclick="onDeleteTxt()"><i class="far fa-trash-alt"></i></button>
+            </div>
+            <div class="specific-txt-tools">
+                <input type="range" onchange="onChngeSize(this.value)" style="display: block; margin: 0% auto;">
+                <input type="text" class="txt-input">
+                <button onclick="changeTxt()">Change Text</button>
+            </div>
         </div>
-        <button class="done-btn">Done</button>
+        <button class="done-btn" onclick="done()" style="margin-top: 10px;">Done</button>
     </main>
 
     <div class="about-me">
@@ -40,11 +49,18 @@
     </div>
 
     <footer class="">
-        <div class="logo">MEMEGEN</div>
+        <h1 class="logo">MEMEGEN</h1>
     </footer>
 
+    <div class="screen hide" onclick="closeModal()"></div>
+    <div class="modal hide">
+        <img class="finished-meme">
+        <button type="submit" onclick="share(this)">Share</button>
+        <button><a class="save-btn" onclick="save()" download="my-file-name.png">Save</a></button>
+    </div>
     <img class="starter-img" style="display: none;">
     <script src="https://kit.fontawesome.com/1dc0ba22a9.js" crossorigin="anonymous"></script>
+    <script src="js/hammer.js"></script>
     <script src="js/editor-service.js"></script>
     <script src="js/main.js"></script>
 </body>

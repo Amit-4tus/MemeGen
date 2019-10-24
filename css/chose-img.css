@@ -1,15 +1,19 @@
 body {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
     margin: 0% auto;
     width: 100vw;
-    background-color: #D0F4CB;
-    color: #773344;
+    background-image: url(../img/background.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #cc0637;
 }
 
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 5%;
-    background-color: #F18805;
 }
 
 h2 {
@@ -19,18 +23,19 @@ h2 {
 .gallery {
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-between;
 }
 
 .starter-img {
-    width: 25vw;
-    padding: 4vw;
+    width: 22vw;
+    border: 1vw solid black;
     border-radius: 27%;
+    margin: 4vw;
 }
 
 .about-me {
     text-align: center;
     padding: 10%;
-    background-color: white;
 }
 
 .portrait {
@@ -42,6 +47,25 @@ footer {
     text-align: center;
     font-size: 2rem;
     width: 100vw;
-    padding: 10% 0%;
-    background-color: #F18805;
+}
+
+@media (min-width: 600px) {
+    header {
+        padding: 0%;
+    }
+    .gallery {
+        width: 70vw;
+        margin: 0px 15vw;
+    }
+
+    .starter-img {
+        width: 7vw;
+        border: .3vw solid black;
+        border-radius: 25%;
+        margin: 2vw;
+    }
+    .portrait {
+        width: 20vw;
+        border-radius: 50%;
+    }
 }

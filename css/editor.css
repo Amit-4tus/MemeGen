@@ -1,15 +1,22 @@
+.hide {
+    display: none;
+}
+
 body {
     margin: 0% auto;
     width: 100vw;
-    background-color: #D0F4CB;
-    color: #773344;
+    background-image: url(../img/background.jpeg);
+    color: #cc0637;
 }
 
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 5%;
-    background-color: #F18805;
+}
+
+main {
+    text-align: center;
 }
 
 canvas {
@@ -27,7 +34,6 @@ canvas {
 .about-me {
     text-align: center;
     padding: 10%;
-    background-color: white;
 }
 
 .portrait {
@@ -39,6 +45,50 @@ footer {
     text-align: center;
     font-size: 2rem;
     width: 100vw;
-    padding: 10% 0%;
-    background-color: #F18805;
+}
+
+.screen {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.507);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    width: 60vw;
+    height: 60vh;
+    margin: 5vh 20vw 10vh 20vw;
+}
+
+.finished-meme {
+    width: 60vw;
+    height: 60vw;
+    /* margin: 10vh 10vw 0px 10vw; */
+}
+
+@media (min-width: 600px) {
+    header {
+        padding: 0%;
+    }
+    
+    canvas {
+        width: 30vw;
+        height: 30vw;
+        padding: 0px;
+    }
+
+    .tools {
+        padding-top: 3%;
+    }
+    .about-me {
+        padding-bottom: 0%;
+    }
+
+    .portrait {
+        width: 20vw;
+        border-radius: 50%;
+    }    
 }
