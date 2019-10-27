@@ -2,6 +2,7 @@
 
 function initGallery() {
     let strHTML = '';
+
     for (let i = 0; i < gStarterImgs.length; i++) {
         strHTML += `<img class="starter-img" id="${gStarterImgs[i].id}" src="starter-images/${gStarterImgs[i].fileName}.jpg" onclick="onImg(this.id)">`;
     }
@@ -23,7 +24,7 @@ function onImg(imgId) {
 
 function renderCanvas() {
     renderCanvasImg();
-    setTimeout(renderCanvasTxt, 100);
+    setTimeout(renderCanvasTxt);
 }
 
 function renderCanvasImg() {
@@ -57,7 +58,6 @@ function changeTxt() {
     let gSelectedId = gSelectedTxt.id;
     let elInput = document.querySelector('.txt-input');
     txts[gSelectedId].txt = elInput.value;
-    elInput.value = '';
     renderCanvas();
 }
 
@@ -73,7 +73,6 @@ function endPressOnCanvas() {
 
 function moveOnCanvas(X, Y) {
     if (!canvasIsPressed) return;
-    console.log(X, Y);
     moveInCanvasModel(X, Y);
     renderCanvas();
 }
@@ -107,8 +106,13 @@ function onDeleteTxt() {
     renderCanvas();
 }
 
-function onChngeSize(value) {
-    txts[gSelectedId].size = value * .6 + 10;
+function onEnlargeSize(value) {
+    txts[gSelectedId].size += 5;
+    renderCanvas();
+}
+
+function onLessenSize(value) {
+    txts[gSelectedId].size -= 5;
     renderCanvas();
 }
 
@@ -142,10 +146,8 @@ function share(elShareBtn) {
 setTimeout(() => {
     elCanvas.addEventListener('touchstart', function (event) {
         pressDownOnCanvas(event.touches[0].clientX, event.touches[0].clientY);
-        console.log('tying');
     });
     elCanvas.addEventListener('touchmove', (event) => {
-        console.log('moving');
         moveOnCanvas(event.touches[0].clientX, event.touches[0].clientY);
         event.preventDefault();
     });

@@ -5,15 +5,16 @@ let ctx;
 let gChosenImg;
 let canvasIsPressed = false;
 let gId = 0;
-let txts = [];
-let gSelectedTxt;
 let gSelectedId = -1;
+let gSelectedTxt;
+let txts = [];
+addTxt();
 let gLastX = 0;
 let gLastY = 0;
 let dataURLstring;
 
 function addTxt(txt = 'lorem', xCoord = 150, yCoord = 75) {
-    let newTxt = { id: gId++, txt: txt, size: '15', xCoord, yCoord};
+    let newTxt = { id: gId++, txt: txt, size: 15, xCoord, yCoord};
     txts.push(newTxt);
     gSelectedTxt = newTxt;
     gSelectedId += 1;
@@ -40,9 +41,10 @@ function deleteTxt() {
             txts[i].id -= 1;
         }
     }
+    gId -= 1;
     txts.splice(gSelectedId, 1);
-    if (gSelectedId === 0) return;
-    gSelectedId -= 1;
+    if (txts.length === 0) {
+        gSelectedId -= 1;
+    }
     gSelectedTxt = txts[gSelectedId];
-
 }
