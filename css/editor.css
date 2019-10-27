@@ -40,7 +40,10 @@ canvas {
 
 .tool {
     font-size: 1.5em;
+    border-radius: 2vw;
     box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.678);
+    background-color: rgba(255, 255, 255, 0.74);
+    border-color: rgb(53, 53, 53);
 }
 
 .about-me {
@@ -113,5 +116,11 @@ footer {
         width: 20vw;
         border: .3vw solid black;
         border-radius: 50%;
+    }
+    .my-name {
+        font-size: 2.5rem;
+    }
+    .my-description {
+        font-size: 1.7rem;
     }
 }

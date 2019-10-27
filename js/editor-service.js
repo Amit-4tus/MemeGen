@@ -13,8 +13,8 @@ let gLastX = 0;
 let gLastY = 0;
 let dataURLstring;
 
-function addTxt(txt = 'lorem', xCoord = 150, yCoord = 75) {
-    let newTxt = { id: gId++, txt: txt, size: 15, xCoord, yCoord};
+function addTxt(txt = 'lorem', xCoord = 150, yCoord = 75, font = 'Impact', color = 'white') {
+    let newTxt = { id: gId++, txt: txt, size: 15, xCoord, yCoord, font};
     txts.push(newTxt);
     gSelectedTxt = newTxt;
     gSelectedId += 1;
@@ -43,7 +43,7 @@ function deleteTxt() {
     }
     gId -= 1;
     txts.splice(gSelectedId, 1);
-    if (txts.length === 0) {
+    if (gSelectedId !== txts.length - 1) {
         gSelectedId -= 1;
     }
     gSelectedTxt = txts[gSelectedId];

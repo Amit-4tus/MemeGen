@@ -38,6 +38,7 @@ function renderCanvasImg() {
 function onAddTxt() {
     addTxt();
     renderSpecTxt(undefined, 150, 75, 15);
+    document.querySelector('.txt-input').value = 'lorem';
 }
 
 function renderSpecTxt(txt = 'lorem', xCoord, yCoord, size) {
