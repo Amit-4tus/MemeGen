@@ -2,8 +2,7 @@ body {
     display: flex;
     flex-flow: column;
     justify-content: center;
-    margin: 0% auto;
-    width: 100vw;
+    margin: 0 auto;
     background-image: url(../img/background.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -11,9 +10,13 @@ body {
 }
 
 header {
-    display: flex;
-    justify-content: center;
-    padding: 5%;
+    text-align: center;
+    padding: 5% 5% 0% 5%;
+}
+
+.logo {
+    max-width: 70vw;
+    margin: 0 auto;
 }
 
 h2 {
@@ -21,13 +24,13 @@ h2 {
 }
 
 .gallery {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 33fr 33fr 33fr;
+    margin: 0 auto;
 }
 
 .starter-img {
-    width: 22vw;
+    width: 70%;
     border: 1vw solid black;
     border-radius: 27%;
     margin: 4vw;
@@ -40,29 +43,33 @@ h2 {
 
 .portrait {
     width: 50vw;
+    border: .3vw solid black;
     border-radius: 50%;
 }
 
 footer {
     text-align: center;
-    font-size: 2rem;
-    width: 100vw;
+    font-size: 1.5rem;
+    max-width: 90vw;
+    padding: 5%;
 }
 
 @media (min-width: 600px) {
     header {
-        padding: 0%;
+        padding: 2%;
+    }
+    .logo {
+        font-size: 3rem;
     }
     .gallery {
-        width: 70vw;
-        margin: 0px 15vw;
+        width: 70%;
+        grid-template-columns: 20fr 20fr 20fr 20fr 20fr;
     }
-
     .starter-img {
-        width: 7vw;
+        width: 80%;
         border: .3vw solid black;
         border-radius: 25%;
-        margin: 2vw;
+        margin: 2vw auto;
     }
     .portrait {
         width: 20vw;

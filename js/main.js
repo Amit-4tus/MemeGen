@@ -73,6 +73,7 @@ function endPressOnCanvas() {
 
 function moveOnCanvas(X, Y) {
     if (!canvasIsPressed) return;
+    console.log(X, Y);
     moveInCanvasModel(X, Y);
     renderCanvas();
 }
@@ -139,11 +140,13 @@ function share(elShareBtn) {
     return false;
 }
 setTimeout(() => {
-    elCanvas.addEventListener('touchstart', function () {
-        pressDownOnCanvas(event.touches[0].clientX, event.touches[0].clientY)
+    elCanvas.addEventListener('touchstart', function (event) {
+        pressDownOnCanvas(event.touches[0].clientX, event.touches[0].clientY);
+        console.log('tying');
     });
-    elCanvas.addEventListener('touchmove', function () {
-        moveOnCanvas(event.offsetX, event.offsetY)
+    elCanvas.addEventListener('touchmove', (event) => {
+        console.log('moving');
+        moveOnCanvas(event.touches[0].clientX, event.touches[0].clientY);
         event.preventDefault();
     });
     elCanvas.addEventListener('touchend', function () {
