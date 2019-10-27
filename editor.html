@@ -21,19 +21,16 @@
         onmouseup="endPressOnCanvas()"></canvas>
 
         <div class="tools">
-            <div class="global-meme-tools">
-                <button class="add-txt-btn" onclick="onAddTxt()">+</button>
-                <button class="up-btn" onclick="goToLastTxt()"><i class="fas fa-arrow-up"></i></button>
-                <button class="down-btn" onclick="goToNextTxt()"><i class="fas fa-arrow-down"></i></button>
-                <button class="delete-txt-btn" onclick="onDeleteTxt()"><i class="far fa-trash-alt"></i></button>
-            </div>
-            <div class="specific-txt-tools">
-                <input type="range" onchange="onChngeSize(this.value)" style="display: block; margin: 0% auto;">
-                <input type="text" class="txt-input">
-                <button onclick="changeTxt()">Change Text</button>
-            </div>
+                <button class="add-txt-btn tool" onclick="onAddTxt()">+</button>
+                <button class="up-btn tool" onclick="goToLastTxt()"><i class="fas fa-arrow-up"></i></button>
+                <button class="down-btn tool" onclick="goToNextTxt()"><i class="fas fa-arrow-down"></i></button>
+                <button class="delete-txt-btn tool" onclick="onDeleteTxt()"><i class="far fa-trash-alt"></i></button>
+                <button class="tool" onchange="onChngeSize(this.value)"><i class="fas fa-plus"></i></button>
+                <button class="tool" onchange="onChngeSize(this.value)"><i class="fas fa-minus"></i></button>
+                <input type="text" class="txt-input tool">
+                <button class="tool" onclick="changeTxt()">Change Text</button>
+                <button class="done-btn tool" onclick="done()" style="margin-top: 10px;">Done</button>
         </div>
-        <button class="done-btn" onclick="done()" style="margin-top: 10px;">Done</button>
     </main>
 
     <div class="about-me">
@@ -43,8 +40,8 @@
             impedit aut deserunt vitae quos molestias ea distinctio veniam ex, animi omnis enim error. Harum aperiam
             quis repellat laudantium.</div>
         <div class="social-media">
-            <div class="facebook"><i class="fab fa-facebook-square"></i></div>
-            <div class="instagram"><i class="fab fa-instagram"></i></div>
+            <div class="facebook" style="display: inline;"><i class="fab fa-facebook-square"></i></div>
+            <div class="instagram" style="display: inline;"><i class="fab fa-instagram"></i></div>
         </div>
     </div>
 

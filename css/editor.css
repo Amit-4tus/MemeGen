@@ -4,15 +4,19 @@
 
 body {
     margin: 0% auto;
-    width: 100vw;
     background-image: url(../img/background.jpeg);
     color: #cc0637;
 }
 
 header {
-    display: flex;
-    justify-content: center;
-    padding: 5%;
+    text-align: center;
+    padding: 5% 5% 0% 5%;
+}
+
+.logo {
+    max-width: 70vw;
+    margin: 0 auto;
+    text-shadow: 5px 5px 3px rgb(0, 0, 0);
 }
 
 main {
@@ -22,13 +26,19 @@ main {
 canvas {
     width: 90vw;
     height: 90vw;
-    padding: 5vw;
+    margin: 5vw;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.678);
 }
 
 .txt {
     display: inline;
     width: 40px;
     height: 40px;
+}
+
+.tool {
+    font-size: 1.5em;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.678);
 }
 
 .about-me {
@@ -38,14 +48,15 @@ canvas {
 
 .portrait {
     width: 50vw;
-    border: .30vw solid black;
+    border: 1vw solid black;
     border-radius: 50%;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.678);
 }
 
 footer {
     text-align: center;
-    font-size: 2rem;
-    width: 100vw;
+    font-size: 1.5rem;
+    padding: 5%;
 }
 
 .screen {
@@ -70,17 +81,23 @@ footer {
 }
 
 /* ---Desktop--- */
+
 @media (min-width: 600px) {
     header {
         padding: 0%;
     }
+    main {
+        display: grid;
+        grid-template-columns: 45fr 45fr;
+    }
     canvas {
-        width: 30vw;
-        height: 30vw;
-        padding: 0px;
+        width: 40vw;
+        height: 40vw;
+        margin: 5%;
+        padding: 0;
     }
     .tools {
-        padding-top: 3%;
+        margin: 5%;
     }
     .modal {
         width: 60vh;
@@ -92,6 +109,7 @@ footer {
     }
     .portrait {
         width: 20vw;
+        border: .3vw solid black;
         border-radius: 50%;
     }
 }
