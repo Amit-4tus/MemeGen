@@ -10,6 +10,7 @@
 </head>
 
 <body onload="initEditor()">
+    <div class="background-image"></div>
     <header>
         <h1 class="logo">MEMEGEN</h1>
     </header>
@@ -22,8 +23,8 @@
 
         <div class="tools">
                 <button class="add-txt-btn tool" onclick="onAddTxt()">Add Text</button>
-                <button class="up-btn tool" onclick="goToLastTxt()"><i class="fas fa-arrow-up"></i></button>
-                <button class="down-btn tool" onclick="goToNextTxt()"><i class="fas fa-arrow-down"></i></button>
+                <button class="up-btn tool" onclick="moveBetweenTexts(-1)"><i class="fas fa-arrow-up"></i></button>
+                <button class="down-btn tool" onclick="moveBetweenTexts(1)"><i class="fas fa-arrow-down"></i></button>
                 <button class="delete-txt-btn tool" onclick="onDeleteTxt()"><i class="far fa-trash-alt"></i></button>
                 <button class="tool" onclick="onEnlargeSize()"><i class="fas fa-plus"></i></button>
                 <button class="tool" onclick="onLessenSize()"><i class="fas fa-minus"></i></button>

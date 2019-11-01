@@ -78,32 +78,30 @@ function moveOnCanvas(X, Y) {
     renderCanvas();
 }
 
-function goToLastTxt() {
+function moveBetweenTexts(diff) {
     gSelectedId = gSelectedTxt.id;
-    if (gSelectedId > 0) {
-        gSelectedTxt = txts[gSelectedId - 1];
-    }
-    else {
-        gSelectedTxt = txts[txts.length - 1];
-    }
-    gSelectedId = gSelectedTxt.id;
-    document.querySelector('.txt-input').placeholder = gSelectedTxt.txt;
-}
-
-function goToNextTxt() {
-    gSelectedId = gSelectedTxt.id;
-    if (gSelectedId === txts.length - 1 && gSelectedId !== 0) {
-        gSelectedTxt = txts[0];
-    }
-    else {
-        gSelectedTxt = txts[gSelectedId + 1];
+    if (gSelectedId > 0 && gSelectedId < txts.length - 1) {
+        gSelectedTxt = txts[gSelectedId + diff];
+    } else if (gSelectedId === 0) {
+        if (diff < 0) {
+            gSelectedTxt = txts[txts.length - 1];
+        } else {
+            gSelectedTxt = txts[gSelectedId + diff];
+        }
+    } else {
+        if (diff < 0) {
+            gSelectedTxt = txts[gSelectedId + diff];
+        } else {
+            gSelectedTxt = txts[0];
+        }
     }
     gSelectedId = gSelectedTxt.id;
-    document.querySelector('.txt-input').placeholder = gSelectedTxt.txt;
+    document.querySelector('.txt-input').value = gSelectedTxt.txt;
 }
 
 function onDeleteTxt() {
     deleteTxt();
+    document.querySelector('.txt-input').value = gSelectedTxt.txt;
     renderCanvas();
 }
 
